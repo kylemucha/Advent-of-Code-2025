@@ -7,6 +7,7 @@ const input = readFileSync("input.txt", "utf8")
 function algorithm (input) {
 
     let curr = 50;
+    let count = 0;
 
     for(let i = 0; i < input.length; i++) {
 
@@ -16,30 +17,16 @@ function algorithm (input) {
         if(direction === "L") {
             curr -= amount;
             curr = ((curr % 100) + 100) % 100;
+            if(curr === 0)
+                count++;
         } else {
              curr +=amount;
              curr = ((curr % 100) + 100) % 100;
+             if(curr === 0)
+                count++;
         }
     }
-    console.log(curr)
+    console.log(count)
 }
 
-algorithm(input)
-
-
-
-/*
-test case:
-starts at : 50
-
-L42 = 8
-R52 = 60
-L15 = 45
-R25 = 70
-L70 = 0 INCREMENT COUNTER BY 1        
-
-return COUNTER = 1
-
-KEY = 1
-*/
-
+algorithm(input);
